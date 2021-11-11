@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybouali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 11:54:02 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/11 13:06:50 by ybouali          ###   ########.fr       */
+/*   Created: 2021/11/11 15:41:37 by ybouali           #+#    #+#             */
+/*   Updated: 2021/11/11 17:53:55 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
-		return (1);
-	return (0);
+	if (*lst != NULL)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+	else
+		*lst = new;
 }

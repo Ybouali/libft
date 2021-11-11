@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybouali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 11:54:02 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/11 13:06:50 by ybouali          ###   ########.fr       */
+/*   Created: 2021/11/11 15:25:21 by ybouali           #+#    #+#             */
+/*   Updated: 2021/11/11 15:40:25 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
-		return (1);
-	return (0);
+	t_list	*p;
+
+	p = (t_list *)malloc(sizeof(t_list));
+	if (!p)
+		return (NULL);
+	p->content = content;
+	p->next = NULL;
+	return (p);
 }

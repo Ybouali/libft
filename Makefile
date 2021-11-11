@@ -9,13 +9,15 @@ OBJS := ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $(SRCS)
 
 clean :
-	rm -f *.o
+	rm -f ${OBJS}
 fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
+
+.PHONY:	all clean fclean re
