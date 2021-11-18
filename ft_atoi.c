@@ -6,13 +6,13 @@
 /*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:53:36 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/09 20:19:20 by ybouali          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:35:37 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_sheck_and_return_nbr(char *str, int sign)
+static int	ft_sheck_and_return_nbr(char *str, int sign)
 {
 	int		index;
 	int		res;
@@ -21,8 +21,7 @@ int	ft_sheck_and_return_nbr(char *str, int sign)
 	index = 0;
 	while (str[index] >= '0' && str[index] <= '9')
 	{
-		res = res * 10;
-		res = res + (str[index] - 48);
+		res = (res * 10) + (str[index] - 48);
 		index++;
 	}
 	if (index > 19 && sign == -1)

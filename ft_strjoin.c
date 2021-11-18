@@ -6,13 +6,13 @@
 /*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 17:58:39 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/09 21:18:43 by ybouali          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:32:02 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_stock_join(char const *str_1, char const *str_2, char *str_new)
+static void	ft_stock_join(char const *str_1, char const *str_2, char *str_new)
 {
 	int		index_1;
 	int		index_2;

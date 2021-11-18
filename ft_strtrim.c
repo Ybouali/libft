@@ -6,7 +6,7 @@
 /*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 06:59:30 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/10 16:39:46 by ybouali          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:33:02 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_lenofstr(const char *src, const char *set)
 	return (len);
 }
 
-void	ft_stock(char const *str, const char *set, char *ret, int len)
+static void	ft_stock_trim(char const *str, const char *set, char *ret, int len)
 {
 	int		index_1;
 	int		index_2;
@@ -88,6 +88,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ret = (char *)ft_calloc((len + 1), sizeof(char));
 	if (!ret)
 		return (NULL);
-	ft_stock(s1, set, ret, len);
+	ft_stock_trim(s1, set, ret, len);
 	return (ret);
 }

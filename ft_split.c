@@ -6,13 +6,13 @@
 /*   By: ybouali <ybouali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 08:40:31 by ybouali           #+#    #+#             */
-/*   Updated: 2021/11/10 10:39:32 by ybouali          ###   ########.fr       */
+/*   Updated: 2021/11/13 17:58:30 by ybouali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_count_number_of_word(char *str, int *h, char c)
+static char	**ft_cnofw(char const *str, int *h, char c)
 {
 	int		size;
 	int		i;
@@ -32,11 +32,14 @@ char	**ft_count_number_of_word(char *str, int *h, char c)
 	*h = size;
 	table = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!table)
+	{
+		free(table);
 		return (NULL);
+	}
 	return (table);
 }
 
-char	**ft_count_char_of_word(char *str, char c, int *f, char **table)
+static char	**ft_ccofw(char const *str, char c, int *f, char **table)
 {
 	int		n;
 	int		i;
@@ -56,13 +59,16 @@ char	**ft_count_char_of_word(char *str, char c, int *f, char **table)
 		}
 		table[h] = (char *)malloc(sizeof(char) * (n + 1));
 		if (!table)
+		{
+			free(table);
 			return (NULL);
+		}
 		h++;
 	}
 	return (table);
 }
 
-void	ft_stock_tab(char **table, int size_of_table, char *str, char c)
+static void	ft_stock_tab(char **table, int soft, char const *str, char c)
 {
 	int	i;
 	int	j;
@@ -70,7 +76,7 @@ void	ft_stock_tab(char **table, int size_of_table, char *str, char c)
 
 	m = 0;
 	i = 0;
-	while (i < size_of_table)
+	while (i < soft)
 	{
 		while (str[m] && str[m] == c)
 			m++;
@@ -87,7 +93,7 @@ void	ft_stock_tab(char **table, int size_of_table, char *str, char c)
 	table[i] = 0;
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(const char *str, char c)
 {
 	char	**table;
 	int		l;
@@ -95,10 +101,10 @@ char	**ft_split(char *str, char c)
 	if (str == NULL)
 		return (NULL);
 	l = 0;
-	table = ft_count_number_of_word(str, &l, c);
+	table = ft_cnofw(str, &l, c);
 	if (!table)
 		return (NULL);
-	table = ft_count_char_of_word(str, c, &l, table);
+	table = ft_ccofw(str, c, &l, table);
 	if (!table)
 		return (NULL);
 	ft_stock_tab(table, l, str, c);
